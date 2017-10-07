@@ -1,0 +1,17 @@
+[
+    {
+        "nume": "Ana",
+        "varsta": 10,
+        "ocupatie": "elev"
+    },
+    {
+        "nume": "Matei",
+        "varsta": 21,
+        "ocupatie": "student"
+    },
+    {
+        "nume": "Iulia",
+        "varsta": 30,
+        "ocupatie": "casnica"
+    }
+]
