@@ -1,7 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<aiml version="2.0">
-  <category>
-      <pattern>SALUT</pattern>
-      <template>salut si tie</template>
-  </category>
+<aiml version="1.0">
+
+    <category>
+        <pattern>SALUT</pattern>
+        <template>
+            <random>
+                <li>Salut.</li>
+                <li>Buna.</li>
+                <li>Sal.</li>
+            </random>
+        </template>
+    </category>
+
+    <category>
+        <pattern></pattern>
+        <template>Cine esti?</template>
+    </category>
+
+    <category>
+        <pattern></pattern>
+        <template>Cine sunteti?</template>
+    </category>
+
+    <category>
+        <pattern></pattern>
+        <template>Cum va numiti?</template>
+    </category>
+
+    <category>
+        <pattern></pattern>
+        <template>Cum te cheama?</template>
+    </category>
+
+    <category>
+        <pattern></pattern>
+        <template>Care este numele tau?</template>
+    </category>
+
+    <category>
+        <pattern></pattern>
+        <template></template>
+    </category>
+
+    <category>
+        <pattern>MA NUMESC *</pattern>
+        <template>
+            <think><set name="nume"><star/></set></think>
+            <random>
+                <li>Cati ani ai, <get name="nume"/>?</li>
+                <li>Ce varsta ai, <get name="nume"/>?</li>
+                <li>Ok, <get name="nume"/>, cu ce te ocupi?</li>
+                <li>Ai un loc de munca?</li>
+                <li>Lucrezi undeva, <get name="nume"/>?</li>
+            </random>
+        </template>
+    </category>
+
+    <category>
+        <pattern></pattern>
+        <that></that>
+        <template></template>
+    </category>
+
+    <category>
+        <pattern>* MA CHEAMA</pattern>
+        <template></template>
+    </category>
+
+        <category>
+        <pattern>* MA NUMESC</pattern>
+        <template></template>
+    </category>
+
+        <category>
+        <pattern>* SUNT</pattern>
+        <template></template>
+    </category>
+
+        <category>
+        <pattern>SUNT *</pattern>
+        <template></template>
+    </category>
+
+    <category>
+        <pattern>MA CHEAMA *</pattern>
+        <template></template>
+    </category>
+
+    <category>
+        <pattern>NUMELE MEU ESTE *</pattern>
+        <template></template>
+    </category>
+
+    <!--<category>-->
+        <!--<pattern></pattern>-->
+        <!--<template><srai></srai></template>-->
+    <!--</category>-->
+
 </aiml>
