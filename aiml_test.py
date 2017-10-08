@@ -1,3 +1,5 @@
+import json
+
 import aiml
 
 # The Kernel object is the public interface to
@@ -14,6 +16,20 @@ k.learn("test.aiml")
 # we ignore.
 # k.respond("load aiml b")
 
-# Loop forever, reading user input from the command
-# line and printing responses.
-while True: print(k.respond(input("> ")))
+with open('interlocutori.json', 'r') as f:
+    iloc_list = json.load(f)
+    print('Avatare disponibile')
+    print('-------------------')
+    for iloc in iloc_list:
+        print(iloc['nume'], str(iloc['varsta'])+' ani', iloc['ocupatie'])
+    ales = False
+    names = [iloc['nume'] for iloc in iloc_list]
+    avatar = ''
+    while not ales:
+        print()
+        avatar = input('Alege: ')
+        if avatar in names:
+            ales = True
+    # Loop forever, reading user input from the command
+    # line and printing responses.
+    while True: print(k.respond(input("> "), avatar))
