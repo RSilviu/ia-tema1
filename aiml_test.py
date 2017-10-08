@@ -30,6 +30,23 @@ with open('interlocutori.json', 'r') as f:
         avatar = input('Alege: ')
         if avatar in names:
             ales = True
+
     # Loop forever, reading user input from the command
     # line and printing responses.
-    while True: print(k.respond(input("> "), avatar))
+    # TO STOP: Ctrl-D on Win
+    while True:
+        try:
+            res = input("> ")
+            print(k.respond(res, avatar))
+        except EOFError:
+            break
+
+
+
+
+
+
+
+
+
+
