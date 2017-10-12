@@ -41,6 +41,8 @@ if os.path.isfile("bot_brain.brn"):
 ######  RECUNOASTERE - TO DO ##########
 ######  SALVARE INFO - TO DO ##########
 
+######  Condu discutia cu <srai> ######
+
 
 avatar = input('Nume: ').strip()
 nume = k.getPredicate('nume',avatar)
