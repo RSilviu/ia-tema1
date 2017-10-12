@@ -217,9 +217,82 @@
         </category>
 
         <category>
-            <pattern>*</pattern>
-            <template></template>
+            <pattern>VARSTA</pattern>
+            <template>
+                <random>
+                    <li>Cati ani ai <get name="nume"/>?</li>
+                    <li>Ce varsta ai <get name="nume"/>?</li>
+                </random>
+            </template>
         </category>
+
+
+        <category>
+            <pattern>ANI</pattern>
+            <template>Multi inainte!</template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that>* ANI *</that>
+            <template>
+                <think><set name="varsta"><star/></set></think>
+                <srai>ANI</srai>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that>* VARSTA *</that>
+            <template>
+                <think><set name="varsta"><star/></set></think>
+                <srai>ANI</srai>
+            </template>
+        </category>
+
+        <category>
+            <pattern>NU *</pattern>
+            <that>* ANI *</that>
+            <template>
+                Tii secret?
+            </template>
+        </category>
+
+        <category>
+            <pattern>NU *</pattern>
+            <that>* VARSTA *</that>
+            <template>
+                De ce?
+            </template>
+        </category>
+
+    <category>
+        <pattern>* ANI</pattern>
+        <that>* ANI *</that>
+        <template>
+            <think>
+                <set name="varsta">
+                    <star/>
+                </set>
+            </think>
+            <srai>ANI</srai>
+
+        </template>
+    </category>
+
+    <category>
+        <pattern>* ANI</pattern>
+        <that>* VARSTA *</that>
+        <template>
+            <think>
+                <set name="varsta">
+                    <star/>
+                </set>
+            </think>
+            <srai>ANI</srai>
+        </template>
+    </category>
+
 
     </topic>
 
@@ -283,16 +356,32 @@
     </topic>
 
 
-    <!--<category>-->
-        <!--<pattern></pattern>-->
-        <!--<template></template>-->
-    <!--</category>-->
+    <category>
+        <pattern>TANAR</pattern>
+        <template>
+            <random>
+                <li>Lucrezi?</li>
+                <li>Ai un loc de munca?</li>
+            </random>
+        </template>
+    </category>
+
+    <category>
+        <pattern>PENSIONAR</pattern>
+        <template>
+            <random>
+                <li>Aveti nepotei?</li>
+                <li>Va place sa jucati table?</li>
+                <li>Cum va simtiti la <get name="varsta"/> ani?</li>
+            </random>
+        </template>
+    </category>
 
 
 
 
     <category>
-        <pattern>ANI</pattern>
+        <pattern>CATVARSTA</pattern>
         <template>
             <condition name="catvarsta">
                 <li value="copil">
@@ -331,37 +420,12 @@
     <!--</template>-->
     <!--</category>-->
 
-    <category>
-        <pattern>MUNCESTI</pattern>
-        <template>Lucrezi?</template>
-    </category>
+    <!--<category>-->
+        <!--<pattern>MUNCESTI</pattern>-->
+        <!--<template>Lucrezi?</template>-->
+    <!--</category>-->
 
     <!--IGNORE-->
-    <category>
-        <pattern>ALO</pattern>
-        <template>Cati ani ai?</template>
-    </category>
-
-
-    <category>
-        <pattern>* ANI</pattern>
-        <that>* ANI *</that>
-        <template>
-            <condition name="nume">
-                <li value="unknown">Cum te cheama?</li>
-            </condition>
-            <condition name="ocupatie">
-                <li value="unknown">Lucrezi?</li>
-            </condition>
-        </template>
-    </category>
-
-    <category>
-        <pattern>* ANI</pattern>
-        <that>* VARSTA *</that>
-        <template>
-        </template>
-    </category>
 
 
 
