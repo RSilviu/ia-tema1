@@ -40,18 +40,24 @@
         <pattern>HEI</pattern>
         <template>
             <!--<think>-->
-                <!--<set name="intro">true</set>-->
-                <!--<set name="topic">nume</set>-->
+            <!--<set name="intro">true</set>-->
+            <!--<set name="topic">nume</set>-->
             <!--</think>-->
             <condition name="nume">
                 <li value="">shit, no name :(</li>
-                <li>Tu esti <get name="nume"/></li>
+                <li>Tu esti
+                    <get name="nume"/>
+                </li>
             </condition>
             <!--<random>-->
-                <!--<li>Eu sunt Robi.</li>-->
+            <!--<li>Eu sunt Robi.</li>-->
             <!--</random>-->
         </template>
     </category>
+
+
+
+
 
     <!--MIN TOPICS-->
 
@@ -64,8 +70,24 @@
         </category>
     </topic>
 
+
     <topic name="varsta"></topic>
-    <topic name="ocupatie"></topic>
+
+
+    <topic name="ocupatie">
+    </topic>
+
+
+
+
+
+
+
+
+    <category>
+        <pattern></pattern>
+        <template></template>
+    </category>
 
     <category>
         <pattern></pattern>
@@ -95,7 +117,9 @@
     <category>
         <pattern>MA NUMESC *</pattern>
         <template>
-            <srai>NUME <star/></srai>
+            <srai>NUME
+                <star/>
+            </srai>
         </template>
     </category>
 
@@ -117,6 +141,29 @@
                 <li>Ai un loc de munca?</li>
                 <li>Lucrezi undeva,<star/>?
                 </li>
+            </random>
+        </template>
+    </category>
+
+    <category>
+        <pattern>ANI</pattern>
+        <template>
+            <condition name="catvarsta">
+                <li value="copil"><srai>COPIL</srai></li>
+                <li value="tanar"><srai>TANAR</srai></li>
+                <li value="pensionar"><srai>PENSIONAR</srai></li>
+                <li>Glumesti, nu?</li>
+            </condition>
+        </template>
+    </category>
+
+    <category>
+        <pattern>COPIL</pattern>
+        <template>
+            <random>
+                <li>Esti elev?</li>
+                <li>Iti place sa inveti?</li>
+                <li>Ce materii iti plac?</li>
             </random>
         </template>
     </category>

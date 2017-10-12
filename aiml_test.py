@@ -1,5 +1,6 @@
 import json
 import os
+from random import choice
 
 import aiml
 
@@ -40,18 +41,45 @@ if os.path.isfile("bot_brain.brn"):
 ######  RECUNOASTERE - TO DO ##########
 ######  SALVARE INFO - TO DO ##########
 
+
 avatar = input('Nume: ').strip()
-nume = k.setPredicate('nume',k.getPredicate('nume',avatar),avatar)
+nume = k.getPredicate('nume',avatar)
+k.setPredicate('nume',nume,avatar)
+topics = ['varsta','ocupatie']
+
+if nume: k.setPredicate('topic',choice(topics),avatar)
+else: k.setPredicate('topic',choice(topics.append('nume')),avatar)
 
 # varsta = k.getPredicate('varsta',avatar)
 # ocupatie = k.getPredicate('ocupatie',avatar)
-
+varsta = ''
+ocupatie = ''
 # Loop forever, reading user input from the command
 # line and printing responses.
 # TO STOP: Ctrl-D on Win
 while True:
     try:
         res = input(avatar + " (tu): ")
+
+        varsta = k.getPredicate('varsta',avatar)
+        cat_varsta = k.getPredicate('catvarsta',avatar)
+
+        if varsta and not cat_varsta:
+            varsta = int(varsta)
+            if 3 <= varsta <= 17: cat_varsta = 'copil'
+            elif 18 <= varsta <= 40: cat_varsta = 'tanar'
+            else: cat_varsta = 'pensionar'
+            k.setPredicate('catvarsta',cat_varsta,avatar)
+
+        ocupatie = k.getPredicate('ocupatie',avatar)
+        # if varsta and nume and not ocupatie:
+        # if ocupatie: pass
+        nume = k.getPredicate('nume',avatar)
+
+        topics = [nume, varsta, ocupatie]
+        # daca avem datele min necesare incheiem dialogul
+        if all(topics): print('Robi (bot): '+'ok ne-auzim :D'); break
+
         print('Robi (bot): ' + k.respond(res, avatar))
     except EOFError:
         k.saveBrain('bot_brain.brn')
