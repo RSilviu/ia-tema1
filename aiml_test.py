@@ -13,7 +13,7 @@ k = aiml.Kernel()
 # k.learn("test.aiml")
 
 if os.path.isfile("bot_brain.brn"):
-    k.bootstrap(brainFile="bot_brain.brn", learnFiles='test.aiml')
+    k.bootstrap(brainFile="bot_brain.brn", learnFiles='knowledge.aiml')
 
 # Use the 'respond' method to compute the response
 # to a user's input string.  respond() returns
@@ -49,8 +49,9 @@ nume = k.getPredicate('nume',avatar)
 k.setPredicate('nume',nume,avatar)
 topics = ['varsta','ocupatie']
 
-if nume: k.setPredicate('topic',choice(topics),avatar)
-else: k.setPredicate('topic',choice(topics.append('nume')),avatar)
+if not nume:
+    topics.append('nume')
+k.setPredicate('topic',choice(topics),avatar)
 
 # varsta = k.getPredicate('varsta',avatar)
 # ocupatie = k.getPredicate('ocupatie',avatar)

@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+    <!--UDC-->
+    <category>
+        <pattern>*</pattern>
+        <template>
+            <random>
+                <li>Nu stiu despre ce vorbesti.</li>
+                <li>Prefer sa vorbim despre altceva.</li>
+                <li>Alta intrebare.</li>
+                <li>...</li>
+                <li>?</li>
+                <li>Da?</li>
+                <li>Pe bune?</li>
+                <li>Nu stiu...</li>
+            </random>
+        </template>
+    </category>
+
+
+    <!--TO DO-->
+    <category>
+        <pattern>BUNA *</pattern>
+        <template>
+            <random>
+                <li>Salut.</li>
+                <li>Buna.</li>
+                <li>Hey.</li>
+                <li>Sal</li>
+                <li>Buna <star/>.</li>
+                <li>Hey.</li>
+            </random>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>* BUNA</pattern>
+        <template>
+            <srai>BUNA
+                <star/>
+            </srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>BUNA</pattern>
+        <template>
+            <srai>BUNA
+            </srai> si tie!
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>HEI</pattern>
+        <template>
+            <random>
+            <li>Eu sunt Robi.</li>
+            </random>
+        </template>
+    </category>
+
+<topic name = "origini">
+
+    <category>
+    <pattern>* ESTI</pattern>
+    <template>
+        <random>
+            <li>Ma numesc Robi. Sunt un bot.</li>
+            <li>Cel mai bun prieten pe care ti l-ai putea dori :D</li>
+            <li>Viitorul locuitor al acestei planetei :></li>
+            <li>Sunt un AI. Iti recomand Westworld ca sa intelegi mai bine conceptul ;) </li>
+        </random>
+    </template>
+    </category>
+    
+
+    <category>
+    <pattern>CINE TE-A CREAT</pattern>
+    <template>Am fost programat in cadrul unei teme la materia AI de catre Silviu Rusu si
+        Sanziana Perju.</template>
+    </category>
+
+    <category>
+    <pattern>CINE TE-A PROGRAMAT</pattern>
+    <template>
+        <srai>CINE TE-A CREAT</srai>
+    </template>
+    </category>
+
+    <category>
+        <pattern>CINE TE-A FACUT</pattern>
+        <template><srai>CINE TE-A CREAT</srai></template>
+    </category>
+
+
+</topic>
+
+
+    <!--MIN TOPICS-->
+
+    <topic name="nume">
+
+        <!-- INTREABA CU POLITETE DUPA VARSTA (OPTIONAL) -->
+        <!--<category>-->
+            <!--<pattern></pattern>-->
+            <!--<template>-->
+                <!--<condition name="catvarsta"></condition>-->
+            <!--</template>-->
+        <!--</category>-->
+
+        <category>
+            <pattern>*</pattern>
+            <template>
+                <condition name="varsta">
+                    <li value="">Cati ani ai?
+                        <think>
+                            <set name="topic">varsta</set>
+                        </think>
+                    </li>
+                    <li>
+                        <condition name="catvarsta">
+                            <li value="copil">Ti-as da o bomboana daca as avea o forma fizica. Dar nu am corp. Nici chef.</li>
+                            <li value="tanar">Perfect. Vineri seara mergem la baut. Fac cinste ;)</li>
+                            <li value="pensionar">Data viitore nu mai vota cu PSD-ul! Am 'inteligenta' in denumirea speciei, stiu ce vorbesc :></li>
+                        </condition>
+        
+                    </li>
+                </condition>
+                <condition name="ocupatie">
+                    <li value=""> Ok, hai ca m-ai facut curios. Ia zi, cu ce te ocupi? Job de zi, nu intreb de noapte.
+                        <think>
+                            <set name="topic">ocupatie</set>
+                        </think>
+                    </li>
+                    <li>Ok, te poti intoarce la ale tale.</li>
+                </condition>
+            </template>
+        </category>
+
+        <category>
+            <pattern>NUME</pattern>
+            <template>Cine sunteti?</template>
+        </category>
+
+        <category>
+            <pattern>NUME</pattern>
+            <template>Cum va numiti?</template>
+        </category>
+
+        <category>
+            <pattern>HELLO</pattern>
+            <template>Cum te cheama?</template>
+        </category>
+
+        <category>
+            <pattern>NUME</pattern>
+            <template>Care este numele tau?</template>
+        </category>
+
+        <category>
+            <pattern>NU *</pattern>
+            <that>CUM TE *</that>
+            <template>
+                <condition name="nume" value="">Trebuie sa stiu cine esti.</condition>
+            </template>
+        </category>
+
+        <category>
+            <pattern>* MA CHEAMA</pattern>
+            <template><srai>NUME *</srai></template>
+        </category>
+
+        <category>
+            <pattern>* MA NUMESC</pattern>
+            <template><srai>NUME *</srai></template>
+        </category>
+
+        <category>
+            <pattern>* SUNT</pattern>
+            <template><srai>NUME *</srai></template>
+        </category>
+
+        <category>
+            <pattern>SUNT *</pattern>
+            <template><srai>NUME *</srai></template>
+        </category>
+
+        <category>
+            <pattern>MA CHEAMA *</pattern>
+            <template><srai>NUME *</srai></template>
+        </category>
+
+        <category>
+            <pattern>NUMELE MEU ESTE *</pattern>
+            <template><srai>NUME *</srai></template>
+        </category>
+
+        <category>
+            <pattern>MA NUMESC *</pattern>
+            <template>
+                <srai>NUME
+                    <star/>
+                </srai>
+            </template>
+        </category>
+
+        <category>
+            <pattern>NUME *</pattern>
+            <template>
+                <condition name="nume">
+                    <li value="">
+                        <think>
+                            <set name="nume">
+                                <star/>
+                            </set>
+                        </think> Ok, <star/>, imi pare bine.
+                    </li>
+                    <li>Stiu deja cum te numesti!</li>
+                </condition>
+                <!--<random>-->
+                    <!--<li>Cati ani ai,<star/>?-->
+                    <!--</li>-->
+                    <!--<li>Ce varsta ai,<star/>?-->
+                    <!--</li>-->
+                    <!--<li>Ok,<star/>, cu ce te ocupi?-->
+                    <!--</li>-->
+                    <!--<li>Ai un loc de munca?</li>-->
+                    <!--<li>Lucrezi undeva,<star/>?-->
+                    <!--</li>-->
+                <!--</random>-->
+            </template>
+        </category>
+
+    </topic>
+
+
+    <topic name="varsta">
+
+        <category>
+            <pattern>OTHER</pattern>
+            <template>
+                <condition name="nume">
+                    <li value="">Trebuie sa stiu cum te cheama
+                        <think><set name="topic">nume</set></think></li>
+                    <li>Bine mai <get name="nume"/>.</li>
+                </condition>
+                <condition name="ocupatie">
+                    <li value="">
+                        <condition name="catvarsta">
+                            <li value=""><srai>VARSTA</srai></li>
+                            <li><srai>CATVARSTA</srai></li>
+                        </condition>
+                        <!--Hmm, si cu ce te ocupi?-->
+                        <!--<think><set name="topic">ocupatie</set></think>--></li>
+                    <li>Ok, te poti intoarce la ale tale.</li>
+                </condition>
+            </template>
+        </category>
+
+        <category>
+            <pattern>VARSTA</pattern>
+            <template>
+                <random>
+                    <li>Cati ani ai <get name="nume"/>?</li>
+                    <li>Ce varsta ai <get name="nume"/>?</li>
+                </random>
+            </template>
+        </category>
+
+
+        <category>
+            <pattern>ANI</pattern>
+            <template>Multi inainte! <srai>OTHER</srai></template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template><srai>OTHER</srai></template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that>* ANI *</that>
+            <template>
+                <think><set name="varsta"><star/></set></think>
+                <srai>ANI</srai>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that>* VARSTA *</that>
+            <template>
+                <think><set name="varsta"><star/></set></think>
+                <srai>ANI</srai>
+            </template>
+        </category>
+
+        <category>
+            <pattern>NU *</pattern>
+            <that>* ANI *</that>
+            <template>
+                Tii secret?
+            </template>
+        </category>
+
+        <category>
+            <pattern>NU *</pattern>
+            <that>* VARSTA *</that>
+            <template>
+                De ce?
+            </template>
+        </category>
+
+    <category>
+        <pattern>* ANI</pattern>
+        <that>* ANI *</that>
+        <template>
+            <think>
+                <set name="varsta">
+                    <star/>
+                </set>
+            </think>
+            <srai>ANI</srai>
+
+        </template>
+    </category>
+
+    <category>
+        <pattern>* ANI</pattern>
+        <that>* VARSTA *</that>
+        <template>
+            <think>
+                <set name="varsta">
+                    <star/>
+                </set>
+            </think>
+            <srai>ANI</srai>
+        </template>
+    </category>
+
+
+    </topic>
+
+
+    <topic name="ocupatie">
+
+        <category>
+            <pattern>COPIL</pattern>
+            <template>Esti elev?</template>
+        </category>
+
+        <category>
+            <pattern>DA</pattern>
+            <that>ESTI ELEV</that>
+            <template>
+                <random>
+                    <li>In ce clasa?</li>
+                    <li>Ce materii iti plac?</li>
+                    <li>La ce scoala?</li>
+                </random>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that>IN CE CLASA</that>
+            <template>Clasa <star/>. Bine de tine. Inca n-ai dat de greu. Ai rabdare pana ajungi la Info.</template>
+        </category>
+
+        <category>
+            <pattern>A 12-A</pattern>
+            <that>IN CE CLASA</that>
+            <template>Acusi vine bacu :))</template>
+        </category>
+
+        <category>
+            <pattern>12</pattern>
+            <template><srai>A 12-A</srai></template>
+        </category>
+
+        <category>
+            <pattern>NU</pattern>
+            <that>ESTI ELEV</that>
+            <template>
+                <random>
+                    <li>Ce norocos!</li>
+                    <li>Te bucuri de copilarie, nu-i asa?</li>
+                    <li>Ah, perfect, inseamna ca ai destul timp liber. Am sa-ti imprumut parola mea de Netflix ;)</li>
+                </random>
+            </template>
+        </category>
+
+        <category>
+            <pattern>OTHER</pattern>
+            <template>
+                <condition name="nume">
+                    <li value="">Numele tau? <think><set name="topic">nume</set></think> </li>
+                    <li>Ok, stiu cum te cheama.</li>
+                </condition>
+                <condition name="varsta">
+                    <li value="">Cati ani ai? <think><set name="topic">varsta</set></think> </li>
+                    <li>Stiu si cati ani ai...</li>
+                </condition>
+            </template>
+        </category>
+
+    <category>
+        <pattern>*</pattern>
+        <template><srai>OTHER</srai></template>
+    </category>
+
+
+    <category>
+        <pattern>TANAR</pattern>
+        <template>
+            <random>
+                <li>Esti student?</li>
+            </random>
+        </template>
+    </category>
+
+        <category>
+            <pattern>DA</pattern>
+            <that>ESTI STUDENT</that>
+            <template>
+                <random>
+                    <li>In ce an?</li>
+                    <li>Ai restante pana acum?</li>
+                    <li>La ce facultate?</li>
+                    <li>Ai timp de prietena?</li>
+                    <li>Stai la camin?</li>
+                </random>
+            </template>
+        </category>
+
+     <category>
+            <pattern>NU</pattern>
+            <that>ESTI STUDENT</that>
+            <template>
+                <random>
+                    <li>Ah, probabil lucrezi deja.</li>
+                    <li>Ai face bine sa nu freci menta pe banii parintilor si sa faci si tu ceva cu viata ta.</li>
+                    <li>eh...daca ai luat BAC-ul tot e ok. </li>
+                    <li>Hmmmm... ai putea sa incerci sa dai totusi la Facultatea de Informatica. Pare ca te pasioneaza din moment ce vorbesti cu mine.</li>
+                </random>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>
+                <condition name="nume">
+                    <li value="">Numele tau? <think><set name="topic">nume</set></think> </li>
+                    <li>Ok, stiu cum te cheama.</li>
+                </condition>
+                <condition name="varsta">
+                    <li value="">Cati ani ai? <think><set name="topic">varsta</set></think> </li>
+                    <li>Stiu si cati ani ai...</li>
+                </condition>
+            </template>
+        </category>
+    
+
+    <category>
+        <pattern>PENSIONAR</pattern>
+        <template>
+                <li>Aveti nepotei?</li>
+        </template>
+    </category>
+
+     <category>
+            <pattern>DA</pattern>
+            <that>ESTI PENSIONAR</that>
+            <template>
+                <random>
+                <li>Ah, ce dragut :D</li>
+                <li>Sunt mititei sau deja sunt la casele lor?</li>         
+                </random>
+            </template>
+        </category>
+
+     <category>
+            <pattern>NU</pattern>
+            <that>ESTI PENSIONAR</that>
+            <template>
+                <random>
+                    <li>Promit ca dupa ce ma invata creatorii sa joc sah, mergem in parc pt un meci!</li>
+                    <li>Or sa vina ei la un moment dat :)</li>
+                    <li>Ati putea lua in considerare adoptia. Nu e acelasi lucru, dar a-ti face un copil orfan fericit si dumneavoastra batranetile usoare.</li>
+                </random>
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>
+                <condition name="nume">
+                    <li value="">Numele tau? <think><set name="topic">nume</set></think> </li>
+                    <li>Ok, stiu cum te cheama.</li>
+                </condition>
+                <condition name="varsta">
+                    <li value="">Cati ani ai? <think><set name="topic">varsta</set></think> </li>
+                    <li>Stiu si cati ani ai...</li>
+                </condition>
+            </template>
+        </category>
+
+
+</topic>
+
+    <category>
+        <pattern>CATVARSTA</pattern>
+        <template>
+            <condition name="catvarsta">
+                <li value="copil">
+                    <srai>COPIL</srai>
+                </li>
+                <li value="tanar">
+                    <srai>TANAR</srai>
+                </li>
+                <li value="pensionar">
+                    <srai>PENSIONAR</srai>
+                </li>
+                <li>Glumesti, nu?</li>
+            </condition>
+        </template>
+    </category>
+
+
+
+    <!--<category>-->
+    <!--<pattern>MA NUMESC *</pattern>-->
+    <!--<template>-->
+    <!--<condition name="nume">-->
+    <!--<li value=""></li>-->
+    <!--</condition>-->
+    <!--<random>-->
+    <!--<li>Cati ani ai,<star/>?-->
+    <!--</li>-->
+    <!--<li>Ce varsta ai,<star/>?-->
+    <!--</li>-->
+    <!--<li>Ok,<star/>, cu ce te ocupi?-->
+    <!--</li>-->
+    <!--<li>Ai un loc de munca?</li>-->
+    <!--<li>Lucrezi undeva,<star/>?-->
+    <!--</li>-->
+    <!--</random>-->
+    <!--</template>-->
+    <!--</category>-->
+
+    <!--<category>-->
+        <!--<pattern>MUNCESTI</pattern>-->
+        <!--<template>Lucrezi?</template>-->
+    <!--</category>-->
+
+    <!--IGNORE-->
+
+
+
+    <!--<category>-->
+    <!--<pattern></pattern>-->
+    <!--<template><srai></srai></template>-->
+    <!--</category>-->
+
+
+</aiml>
